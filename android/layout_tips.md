@@ -12,6 +12,8 @@ absolute layout does not work for multiple devices (tv - wearable - tables - sma
 
 - Responsive Design!
 
-scrollable list with 10 items 
+
+scrollable list with 10 items
+
 	- needs 12 items, 2 recycling views 
 	- called AdapterView (ListView, GridView)

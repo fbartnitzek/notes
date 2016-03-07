@@ -26,18 +26,22 @@
 
 ## XML Layout
 - defines collection of views, viewGroups and relationships between them
+
 	1) inflate: xml layout to java view
+
 	2) associate: inflated layout with activity or fragment
 
 	a) for an activity (onCreate)
+
 ```
 setContentView(R.layout.activty_main);
 ```
 
 	b) for a fragment (onCreateView)
+
 ```
-		View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-		...
+View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+...
 ```
 
 ##ListView
