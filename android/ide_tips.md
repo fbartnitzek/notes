@@ -1,0 +1,61 @@
+# IDE tips
+- duplicate lines
+	- ctrl + d
+- expand/shrink selection
+	- ctrl + w [shift]
+- surround with
+	- ctrl + alt + t
+- recent files
+	- ctrl + e
+- live templates
+	- ctrl + j
+- move methods
+	- ctrl + shift + up/down
+- complete statement
+	- ctrl + shift + enter
+- last edit selection
+	- ctrl + shift + backspace
+- join lines and literals
+	- ctrl + shift + j
+- select in
+	- alt + f1
+- unwrap/remove
+	- ctrl + shift + delete
+- command look-up
+	- ctrl + shift + a
+- reformat code
+	- ctrl + alt + l
+- show docs for selected api
+	- ctrl + q
+- show parameters for selected methods
+	- ctrl + p
+- generate method
+	- alt + insert
+- jump to source
+	- f4
+- delete line
+	- ctrl + y
+- navigate tabs
+	- alt + left/right
+- open class
+	- ctrl + n
+- open file
+	- ctrl + shift + n
+- open symbol
+	- ctrl + shift + alt + n
+- next/previous error
+	- f2/ shift f2
+- goto declaration / implementation
+	- ctrl + b [shift]
+- goto super
+	- ctrl + u
+- call hierarchy
+	- ctrl + alt + h
+- rename
+	- shift f6
+- optimize imports
+	- ctrl + alt + o
+- previous / next method
+	- alt + up/down
+- close active tab
+	- ctrl + f4
