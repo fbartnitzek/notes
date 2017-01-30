@@ -1,6 +1,6 @@
 javascript basics resume
 ========================
-
+udacity course: 
 ```
 https://www.udacity.com/course/viewer#!/c-ud804/l-1946788554/m-1926588677
 ```
