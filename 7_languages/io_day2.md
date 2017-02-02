@@ -329,3 +329,31 @@ Io> 5/0
 - add a slot called myAverage to a list that computes the avg of all the numbers in a list
 	- what happens if there are no numbers in a list? (bonus: raise IO Exception if NaN exists)
 	- see myAverage.io (with +! operation)
+
+- Write a prototype for a two-dimensional list. 
+  The `dim(x,y)` method should allocate a list of y lists that are x elements long
+  `set(x,y,value)` should set a value, and `get(x,y)` should return that value
+	- map examples
+```
+# map(index, value, f(index,value))
+Io> list(1,2,3,4,5) reverse map(i, x, x+i)
+==> list(5, 5, 5, 5, 5)
+# map (value, f(value))
+Io> list(1,2,3,4,5) map(x, x * 2)
+==> list(2, 4, 6, 8, 10)
+# map (f(self))
+Io> list(1,2,3,4,5) map ( * 3)
+==> list(3, 6, 9, 12, 15)
+```
+	- see protoMatrix.io
+
+- write a transpose method so that `(new_matrix get(y,x)) == matrix get(x,y)` on the original list
+	- see protoMatrix.io - transpose
+
+	- write a matrix to a file and read a matrix from a file
+		- simple form in protoMatrix.io
+		- needs additional Type/proto-information to use previous methods
+
+- write a program that gives you ten tries to guess a random number from 1-100.
+	if you would like, give a hint of "hotter" or "colder" after the first guess
+	- see guessing.io (after some tries guess right at the 4th try :-))
