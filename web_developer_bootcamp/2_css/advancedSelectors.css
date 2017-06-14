@@ -1,0 +1,39 @@
+/*Element*/
+li {
+
+}
+/*class*/
+.hello {
+
+}
+/*id*/
+#name {
+
+}
+
+/*Star*/ /* - every element of the page */
+* {
+	border: 1px solid lightgrey;
+}
+
+/*Descendant Selector*/ /*two or more selectors chained*/
+li a { /*every anchor-tag insied a li */
+	color: red;
+}
+
+/*Adjacent Selector*/
+h4 + ul { /* sibling selector, each ul on same level as h4*/
+	border: 4px solid red;
+}
+
+
+/*Attribute Selector*/
+a[href="http://www.google.com"] {
+	background: blue;
+}
+
+/*nth of type*/
+/*li:nth-of-type(3) - not every third, just the third */
+li:nth-of-type(odd){
+	background: purple;
+}
