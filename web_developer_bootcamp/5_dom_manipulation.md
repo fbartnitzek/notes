@@ -227,3 +227,54 @@ list.length //467 -> TODO: unique
 
 document.querySelectorAll("tr").length - document.querySelectorAll("table").length;	//439
 ```
+
+## RGB Color Game
+- Red Green Yellow Guessing game
+- hide and show elements
+```
+document.querySelectorAll(".square")[5].style.display="none";
+document.querySelectorAll(".square")[5].style.display="block";
+```
+- hover css effects
+```
+button:hover {
+    /*inversed colors*/
+    color: white;
+    background-color: steelblue;
+}
+```
+- transition property
+```
+any color/background color changes takes 2s / 0.3s to fade in
+transition: all 2.0s;
+
+/* transition only for background changes in squares */
+transition: background 0.6s;
+```
+
+- browser compatibility, 3 different versions needed
+```
+    transition: background 0.6s;			/* default */
+    -webkit-transition: background 0.6s;	/* Safari */
+    -moz-transition: background 0.6s;		/* Mozilla */
+```
+- border radius
+```
+/*circles*/
+border-radius: 50%;	
+
+/*rounded squares*/
+border-radius: 15%;	
+```
+
+- javascript design pattern
+structure code into modules like this, also to avoid namespace-conflicts
+```
+var game = {}
+game.init = function () {
+    setupModeButtons();
+    setupSquares();
+    reset();
+};
+game.init();
+```
