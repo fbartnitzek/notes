@@ -30,8 +30,13 @@ function formatTitle(node){
 		'<h4 class="panel-title">' +
 			'<a data-toggle="collapse" href="#collapse-' + calcId(node) + '">' +
 				'<span class="glyphicon glyphicon-plus" aria-hidden="true"/>' +
-			'</a> <a class="id-links" href="ids/' + calcId(node) + '">' + node.nodeName + '</a>' +
+			'</a> ' +
+			formatNodeLink(node) +
 		'</h4>';
+}
+
+function formatNodeLink(node){
+		return '<a class="id-links" href="ids/' + calcId(node) + '">' + showNode(node) + '</a>';
 }
 
 function formatCollapse(node){
@@ -56,10 +61,7 @@ function formatCollapse(node){
 function formatNode(node){
 	//console.log("formatNode " + node.nodeName + ", childNodes: " + node.childNodes);
 	if (node.childNodes == null || node.childNodes.length == 0){
-		return '' +
-			'<a class="id-links" href="ids/' + calcId(node) + '">' + 
-				node.nodeName + 
-			'</a>';
+		return formatNodeLink(node);
 	} else {
 		return '' +
 			formatTitle(node) +
@@ -73,14 +75,33 @@ function calcId(node){
 	return node.nodeName;
 }
 
+function showNode(node){
+	return node.nodeName + showAttributes(node);
+}
+
+function showAttributes(node){
+	if (node.attributes == null || node.attributes.length == 0){
+		return "";
+	} else {
+		var result = " (";
+		for (var i=0; i < node.attributes.length; i++){
+			if (i>0){
+				result += ", ";
+			}
+			result += node.attributes[i].nodeName + "=" + node.attributes[i].nodeValue;
+		}
+		return result + ")";
+	}
+}
+
 function initXml(){
 	return 	"<Root>" +
 				"<One></One>" +
-				"<Two></Two>" +
-				"<Three>" +
+				"<Two name='someName'></Two>" +
+				"<Three attr='someAttr'>" +
 					"<A></A>" +
 					"<B>" +
-						"<B1>" +
+						"<B1 hello='world'>" +
 							"<b11></b11>" +
 						"</B1>" +
 					"</B>" +
