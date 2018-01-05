@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 1</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<div>Div 1</div>
+<div class="highlight">Div 2</div>
+<div id="third">Div 3</div>
+<div class="highlight">Div 4</div>
+<script>
+    $("div").css("background", "purple");
+
+    $("div.highlight").css("width", "200px");
+
+    $("#third").css("border", "1px solid orange");
+
+//    $("div:first").css("color", "pink");
+    $("div:first-of-type").css("color", "pink");    // slightly faster built-in-css
+</script>
+</body>
+</html>
