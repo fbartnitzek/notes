@@ -283,3 +283,114 @@ $("ul").on("click", "li", function () {
     $(this).toggleClass("completed");
 });
 ```
+
+## styling
+- minimal visible border (transparent black...)
+	- `box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);`
+- even and odd li with different background-colors:
+```
+li:nth-child(2n){
+    background: #f7f7f7;
+}
+```
+- content-box to border-box - so width=100% counts not just for content, but includes
+	- padding
+	- border
+	- not margin
+```
+box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+```
+- override default browser-focus (looks way better): 
+```
+input:focus{
+    background: white;
+    border: 3px solid #2980b9;
+    outline: none;
+}
+```
+- background with gradient
+	- https://uigradients.com
+	- click trough
+	- get css and insert into body
+```
+body {
+    font-family: Roboto;
+    background: #a8c0ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3f2b96, #a8c0ff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3f2b96, #a8c0ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+```
+- add plus sign to h1
+	- link to font awesome: `<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>`
+	- add icon to h1: `<h1>To-Do List <i class="fa fa-plus" aria-hidden="true"></i></h1>`
+	- style plus:
+```
+.fa-plus {
+    float: right;
+}
+```
+- nicer trash-icon:
+	- replace X: `<span><i class="fa fa-trash" aria-hidden="true"></i></span>`
+	- style:
+```
+span {
+    background: #e74c3c;
+    height: 40px;
+    margin-right: 20px;
+    text-align: center;
+    color: white;
+    width: 40px;
+    display: inline-block;
+}
+```
+
+- animation with opacity:
+```
+span {
+    background: #e74c3c;
+    height: 40px;
+    margin-right: 20px;
+    text-align: center;
+    color: white;
+    width: 0;
+    display: inline-block;
+    transition: 0.2s linear;
+    opacity: 0;
+}
+
+li:hover span {
+    width: 40px;
+    opacity: 1.0;
+}
+```
+- fix border-problem on li with empty border on input
+```
+input {
+// ...
+    border: 3px solid rgba(0,0,0,0);
+}
+```
+- use plus-sign to fadeIn/out addItem
+```
+$(".fa-plus").click(function(){
+    $("input[type='text']").fadeToggle();
+});
+```
+
+- ordering items in CSS
+	- by specificity
+	
+# PatatapClone
+- use paperjs: http://paperjs.org/
+- and howlerjs: https://howlerjs.com/
+- see src - use data-object for color and sound per key
+- sounds from neuronal-synchrony (jonobr1@github)
+
+## paperjs
+- download and see examples
+- works on a canvas-element which is designed for javascript-scripting: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
+- add js: `<script type="text/javascript" src="paper-full.js"></script>`
+- getting started: http://paperjs.org/tutorials/getting-started/working-with-paper-js/
+- use script-tag in html, or you get a Cross-Origin Resource Sharing problem: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS

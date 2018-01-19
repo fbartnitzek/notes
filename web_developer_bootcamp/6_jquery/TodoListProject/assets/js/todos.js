@@ -20,6 +20,11 @@ $("input[type='text']").keypress(function (event) {
         $(this).val("");
         console.log("enter pressed: " + text);
         // create a new li and add to ul
-        $("ul").append("<li><span>X</span> " + text + "</li>")
+        // $("ul").append("<li><span>X</span> " + text + "</li>")
+        $("ul").append("<li><span><i class='fa fa-trash' aria-hidden='true'></i></span> " + text + "</li>")
     }
+});
+
+$(".fa-plus").click(function(){
+    $("input[type='text']").fadeToggle();
 });
