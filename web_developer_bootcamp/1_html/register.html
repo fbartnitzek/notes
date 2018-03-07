@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<h1>Register</h1>
+<form>
+    <div>
+        <label for="firstName">First Name: </label>
+        <input id="firstName" name="firstName" type="text" placeholder="John" required/>
+        <label for="lastName">Last Name: </label>
+        <input id="lastName" name="lastName" type="text" placeholder="Smith" required/>
+    </div>
+
+    <div>
+        <label for="male">Male: </label>
+        <input id="male" name="gender" type="radio" value="MALE"/>
+        <label for="female">Female: </label>
+        <input id="female" name="gender" type="radio" value="FEMALE"/>
+        <label for="other">Other: </label>
+        <input id="other" name="gender" type="radio" value="OTHER"/>
+    </div>
+    <div>
+        <label for="email">Email: </label>
+        <input id="email" type="email" name="email" required/>
+        <label for="password">Password: </label>
+        <input id="password" type="password" name="password" pattern=".{5,10}" required title="5 to 10 characters"/>
+        <!--<input id="password" type="password" name="password" minlength="5" maxlength="10" required title="5 to 10 characters"/>-->
+    </div>
+    <div>
+        <label for="month">Birthday: </label>
+        <!--<input id="birthday" type="date" name="birthday"/>-->
+        <select id="month" name="month">
+            <option>Jan</option>
+            <option>Feb</option>
+            <option>...</option>
+            <option>Dec</option>
+        </select>
+        <select id="day" name="day">
+            <option>01</option>
+            <option>02</option>
+            <option>...</option>
+            <option>31</option>
+        </select>
+        <select id="year" name="year">
+            <option>2017</option>
+            <option>2016</option>
+            <option>...</option>
+            <option>1850</option>
+        </select>
+    </div>
+    <div>
+        <label for="accept">I agree to the terms and conditions </label>
+        <input id="accept" type="checkbox" name="accept" required/>
+    </div>
+    <button>Submit</button>
+
+</form>
+</body>
+</html>

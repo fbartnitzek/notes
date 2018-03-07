@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+<h1>My Header</h1>
+<script>
+
+    var h1 = document.querySelector("h1");  // select
+    h1.style.color = "pink";                // manipulate
+
+    var body = document.querySelector("body");  // select
+    var isBlue = false;
+
+    setInterval(function () {                   // manipulate periodically
+        if (isBlue){
+            body.style.background = "white";
+        } else {
+            body.style.background = "#3498db";
+        }
+        isBlue = !isBlue;
+    }, 1000);
+
+</script>
+</body>
+</html>

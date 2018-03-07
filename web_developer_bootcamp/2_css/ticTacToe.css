@@ -1,0 +1,22 @@
+td {
+    height: 100px;
+    width: 100px;
+}
+
+table {
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+td.verticalBorder {
+    border-left: black solid 1px;
+    border-right: black solid 1px;
+}
+
+td.horizontalBorder{
+    border-top: black solid 1px;
+    border-bottom: black solid 1px;
+}

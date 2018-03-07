@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Tree 1</title>
+    <style>
+.flow {
+    position: relative;
+    margin: 50px;
+}
+.block {
+    background-color: #555;
+    height: 50px;
+    width: 150px;
+}
+.box {
+    width: 200px;
+    border: 2px solid #555;
+    margin: 0 auto;
+    position: relative;
+    background-color: #fff;
+}
+.box .block {
+    position: relative;
+    margin: auto;
+
+}
+#one {
+    top: -25px;
+}
+#two {
+    top: -8px;
+}
+#three {
+    bottom: -8px;
+}
+#four {
+    bottom: -25px;
+}
+.box .abs {
+    position: absolute;
+}
+#five {
+    top: 42px;
+    left: -180px;
+}
+#six {
+    top: 42px;
+    right: -180px;
+}
+hr{
+    position: absolute;
+    border: 0;
+    border-top: 2px solid #555;
+    left: 0;
+    right: 0;
+    position: absolute;
+    top: 60px;
+    width: 300px;
+    z-index: -1;
+}
+    </style>
+</head>
+<body>
+	<a href="http://jsfiddle.net/fR47n/">Src</a>
+    <div class="flow">
+        <div class="box">
+            <div id="one" class="block"></div>
+            <div id="two" class="block"></div>
+            <div id="three" class="block"></div>
+            <div id="four" class="block"></div>
+
+            <div id="five" class="block abs"></div>
+
+            <div id="six" class="block abs"></div>
+        </div>
+
+        <hr>
+    </div>
+</body>
+</html>
