@@ -140,4 +140,20 @@ yes
 no
 ```
 
-- 
+## Wrapping up
+- first: building a knowledge base, composed of logical facts and inferences about the problem domain
+- second: compile knowledge base and ask questions about the domain
+	- answers with yes / no / Solution
+- prolog uses unification to make variables on both sides of a system match
+- natural language processing (express complex, inexact language in concrete rules)
+- games (complex models)
+- semantic web and Resource Description Language (RDF)
+- AI: some agent modifies behavio based on complex rules
+- logic programming language
+- excels in working with constrained resources, f.e. scheduling
+- weakness:
+	- no general-purpose language
+	- very large data sets (user needs to understand how language works for more then simple examples)
+	- knowledge of resolving recursive rules necessary => tail-recursive rules to complete even moderately large problems
+- if you find a problem thats especially well suited for Prolog, take advantage :-)
+	- combine rules-based language in combination with other general-purpose language like SQL within Ruby/Java
