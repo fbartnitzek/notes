@@ -233,15 +233,22 @@ WriteResult({ "nRemoved" : 1 })
 ```
 - delete all with `db.collection.drop();`
 
+## RESTful Routing
+- mapping HTTP routes to CRUD functionality
+- follow a pattern (conventional and reliable)
+
 ## RESTFUL ROUTES
 - example with dogs:
-name		url			verb	description
-===============================================================
-INDEX 		/dogs 		GET 	Display a list of all dogs
-NEW			/dogs/new	GET		Displays form to make a new dog
-CREATE		/dogs		POST	Add new dog to DB
-SHOW		/dogs/:ids	GET		Shows info about one dog
+name		url				verb	description
+==========================================================================
+INDEX 		/dogs 			GET 	Display a list of all dogs
+NEW			/dogs/new		GET		Displays form to make a new dog
+CREATE		/dogs			POST	Add new dog to DB, then redirect
+SHOW		/dogs/:id		GET		Shows info about one dog
+EDIT		/dogs/:id/edit	GET		Show edit form for one dog
+UPDATE		/dogs/:id		PUT		Update a particular dog, then redirect
+DESTROY		/dogs/:id		DELETE	Delete a particular dog, then redirect
 
 - new must be before show!
 - f.e. github/users
-- new show route added
+- added new show route for Campground
