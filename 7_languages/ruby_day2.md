@@ -172,6 +172,31 @@ end
 
 ## Mixin / Modules
 - see example to_file.rb
+```
+module ToFile
+  def filename
+    "object_#{self.object_id}.txt"
+  end
+  def to_f
+    File.open(filename, 'w') {|f| f.write(to_s)}
+  end
+end
+
+class Person
+  include ToFile
+  attr_accessor :name
+
+  def initialize(name)
+    @name=name
+  end
+  def to_s
+    name
+  end
+end
+
+Person.new('matz').to_f
+```
+
 - extraordinary: method to_s is used in module, but implemented in class (hidden abstract method...)
 	- java: contract is explict => class will implement a formal interface
 	- ruby: contract is implicit => duck typing
