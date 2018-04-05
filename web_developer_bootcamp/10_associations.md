@@ -392,3 +392,80 @@ Campground.findById(req.params.id).populate("comments").exec(function(err, found
      
     module.exports = seedDB;
 ```
+
+## nested routes
+- table
+
+name	url 							verb
+===============================================
+INDEX	/campgrounds					GET
+NEW 	/campgrounds/new				GET
+CREATE	/campgrounds					POST
+SHOW	/campgrounds/:id				GET
+
+NEW 	/campgrounds/:id/comments/new	GET
+CREATE 	/campgrounds/:id/comments		POST
+
+- comment/new with grouped values in form:
+	- text and author now in comment-object
+	- instead of object creation in app.js its already the right object to use for Comment.create
+```
+ <form action="/campgrounds/<%= campground._id %>/comments" method="POST">
+	<div class="form-group">
+		<input name="comment[text]" type="text" class="form-control" placeholder="text">
+	</div>
+	<div class="form-group">
+		<input name="comment[author]" type="text" class="form-control" placeholder="author">
+	</div>
+	<button type="submit" class="btn btn-primary btn-block">Submit</button>
+</form>
+```
+
+- app.js Comments routes
+```
+app.get("/campgrounds/:id/comments/new", function (req, res) {
+    Campground.findById(req.params.id, function(err, campground){
+       if (err){
+           console.log(err);
+       } else {
+           res.render("comments/new", {campground: campground});
+       }
+    });
+});
+
+app.post("/campgrounds/:id/comments", function(req, res){
+   // lookup campground using id
+   Campground.findById(req.params.id, function(err, campground){
+       if (err){
+           console.log(err);
+           res.redirect("/campgrounds");
+       } else {
+           // create new comment
+           // console.log(req.body.comment);
+           Comment.create(req.body.comment, function(err, comment){
+               if (err){
+                   console.log(err);
+               } else {
+                   // connect new comment to campground
+                   campground.comments.push(comment);
+                   campground.save();
+                   
+                   // redirect campground show page
+                   res.redirect("/campgrounds/" + campground._id);
+               }
+           });
+       }
+   });
+});
+```
+
+## Styling
+-  .caption-full can be replaced with .caption
+- use dirname to explicitly add public-dir:
+```
+app.use(express.static(__dirname + "/public"));
+console.log("dirName: " + __dirname);
+
+// prints:
+dirName: C:\Workspace\notes\web_developer_bootcamp\8_yelpCamp\YelpCamp
+```
