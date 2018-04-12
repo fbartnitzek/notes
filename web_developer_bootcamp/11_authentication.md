@@ -156,3 +156,11 @@ app.use(function(req, res, next){
    next();
 });
 ```
+
+## Refactoring Routes
+- use express router, routes in different files
+- use router with mergeParams
+```
+var router = express.Router({mergeParams: true});
+```
+- drastically smaller
