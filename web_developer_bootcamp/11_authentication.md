@@ -163,4 +163,61 @@ app.use(function(req, res, next){
 ```
 var router = express.Router({mergeParams: true});
 ```
-- drastically smaller
+- drastically smaller app.js
+
+## Users and comments
+- update comment to use userId and userName
+```
+var commentSchema = new mongoose.Schema({
+    text: String,
+    author: {
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        username: String
+    }
+});
+```
+
+- update comments-new-route to use known user when creating a comment
+	- also remove author from form
+```
+// Comments create
+router.post("/", isLoggedIn, function(req, res){
+    // lookup campground using id
+    Campground.findById(req.params.id, function(err, campground){
+        if (err){
+            console.log(err);
+            res.redirect("/campgrounds");
+        } else {
+            // create new comment
+            // console.log(req.body.comment);
+            Comment.create(req.body.comment, function(err, comment){
+                if (err){
+                    console.log(err);
+                } else {
+                    // add username and it to comment
+                    comment.author.id = req.user._id;
+                    comment.author.username = req.user.username;
+                    // save comment
+                    comment.save();
+                    
+                    // connect new comment to campground
+                    campground.comments.push(comment);
+                    campground.save();
+
+                    // redirect campground show page
+                    res.redirect("/campgrounds/" + campground._id);
+                }
+            });
+        }
+    });
+});
+```
+
+## Users and Campgrounds
+- anyone can read comments or view campgrounds
+- but only logged in users can create campgrounds
+- save it to newly created campground
+- more or less the same like comments with users
