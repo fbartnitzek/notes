@@ -120,3 +120,112 @@ module.exports = middlewareObj;
 ```
 - special require-directory: `var middleware = require("../middleware");`
 	- also used in express (just 1 file which uses other files)
+	
+## Flash!
+- install connect-flash (github)
+	- https://gist.github.com/brianmacarthur/a4e3e0093d368aa8e423
+	- https://github.com/jaredhanson/connect-flash
+	- `npm install --save connect-flash`
+- app.js
+```
+	// ...
+	flash           = require("connect-flash"),
+    passport        = require("passport"),	// flash needs to be initialized before passport
+	// ...
+
+app.use(flash());
+```
+- complicated errors: press sign up button twice - https://www.udemy.com/the-web-developer-bootcamp/learn/v4/questions/1700812 
+
+### Flash Demo
+- fill flash
+	- for next request
+	- nothing will be shown without next
+```
+middlewareObj.isLoggedIn = function(req, res, next){
+    if (req.isAuthenticated()){
+        return next();
+    }
+    req.flash("error", "Please Login First!");
+    res.redirect("/login");
+};
+```
+
+- use redirect in route / ejs:
+	- in indexRoutes-login get eventually stored error message and redirect message-content (or nothing)
+```
+// show login form
+router.get("/login", function (req, res) {
+    res.render("login", {message: req.flash("error")});
+});
+```
+	- in login-ejs show message:
+```
+	<h1><%= message %></h1>
+```
+
+### Flash more generic
+- show flash message on every page
+	- move to end of header-file
+- push message to all templates via existing middleware
+```
+// middleware to push currentUser into each route
+app.use(function(req, res, next){
+    res.locals.currentUser = req.user;
+    res.locals.message = req.flash("error");
+    next();
+});
+```
+- also for logout messages:
+```
+// logout
+router.get("/logout", function(req, res){
+    req.logout();
+    req.flash("error", "logged you out");
+    res.redirect("/campgrounds");
+});
+```
+
+### Flash styling with bootstrap
+- https://v4-alpha.getbootstrap.com/components/alerts/
+- use different stores for different message types (success and error)
+```
+// middleware to push currentUser into each route
+app.use(function(req, res, next){
+    res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
+    next();
+});
+```
+
+- empty array is truthy so some more if-then-else:
+```
+<div class="container">
+	<% if(error && error.length > 0){ %>
+	<div class="alert alert-danger" role="alert">
+		<%= error %>
+	</div>
+	<% }%>
+	<% if(success && success.length > 0){ %>
+	<div class="alert alert-success" role="alert">
+		<%= success %>
+	</div>
+	<% } %>
+</div>
+```
+
+### Add Messages
+- campground / comments / auth
+- redirect-message-problem on signOn
+	- Per the docs, you can either set a flash message on the req.flash object before returning a res.redirect() or you can pass the req.flash object into the res.render() function.
+	- workaround:
+```
+    if(err){
+      req.flash("error", err.message);
+      return res.redirect("/register");
+    }
+```
+
+### More Error handling
+- application crashes with modified url: https://www.udemy.com/the-web-developer-bootcamp/learn/v4/questions/2758358
