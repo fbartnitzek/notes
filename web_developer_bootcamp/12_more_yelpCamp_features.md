@@ -297,3 +297,17 @@ app.use(function(req, res, next){
 ```
 
 ## Dynamic Price Feature
+
+## Other features
+- Google Maps location - https://www.youtube.com/watch?v=B4OuCjQLJ9k 
+- time since created: https://i.imgur.com/CzbwOcd.jpg
+- Admin role (user roles) - https://www.youtube.com/watch?v=somc45pnM2k
+- User profile - https://youtu.be/6ar77jZ_ajc
+- Password reset - https://youtu.be/UV9FvlTySGg
+- Fuzzy Search - https://youtu.be/9_lKMTXVk64
+- Image upload - https://youtu.be/RHd4rP9U9SA
+- Migrating to Bootstrap 4 - https://www.youtube.com/watch?v=NHHh0sj1uKY 
+- Comments on the show page - https://www.udemy.com/the-web-developer-bootcamp/learn/v4/questions/3190558
+- Pagination on campgrounds index - https://www.udemy.com/the-web-developer-bootcamp/learn/v4/questions/3190496
+- Contact page with reCaptcha - https://blog.djpawson.me/2018/02/05/yelpcamp-contact-page-with-recaptcha/
+- Signup with reCaptcha - https://blog.djpawson.me/2018/02/28/recaptcha-login/
