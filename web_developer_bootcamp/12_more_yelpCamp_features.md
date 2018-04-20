@@ -229,3 +229,69 @@ app.use(function(req, res, next){
 
 ### More Error handling
 - application crashes with modified url: https://www.udemy.com/the-web-developer-bootcamp/learn/v4/questions/2758358
+
+## Background Slider
+- github.com/nax3t/background-slider
+- modernizr - helps for older browser like IE8 - cross browser compatible
+- nodemon `npm install -g nodemon` like `node app.js`, but restarts server on every detected change
+	- just start with `nodemon` (looks into file thats app.js)
+- css
+```
+#landing-header {
+    z-index: 1; /* third direction, coming forward towards us */
+    position: relative; /* needed for z-index */
+    text-align: center;
+    padding-top: 40vh;	/* view height */
+}
+```
+
+- insert slide pics
+```
+.slideshow li:nth-child(1) {
+    background-image: url(http://i.imgur.com/K3mPv14.jpg);
+}
+.slideshow li:nth-child(2) {
+    background-image: url(http://i.imgur.com/SBEmFpv.jpg);
+    animation-delay: 10s;
+}
+.slideshow li:nth-child(3) {
+    background-image: url(http://i.imgur.com/emvhOnb.jpg);
+    animation-delay: 20s;
+}
+.slideshow li:nth-child(4) {
+    background-image: url(http://i.imgur.com/2LSMCmJ.jpg);
+    animation-delay: 30s;
+}
+.slideshow li:nth-child(5) {
+    background-image: url(http://i.imgur.com/TVGe0Ef.jpg);
+    animation-delay: 40s;
+}
+```
+
+- insert animation
+```
+@keyframes imageAnimation {
+    0% {
+        opacity: 0;
+        animation-timing-function: ease-in;
+    }
+    10% {
+        opacity: 1;
+        animation-timing-function: ease-out;
+    }
+    20% {
+        opacity: 1
+    }
+    30% {
+        opacity: 0
+    }
+}
+```
+
+- older browser support
+```
+/* Older browser support - .no-cssanimations class added by modernizr */
+.no-cssanimations .slideshow li {
+	opacity: 1;
+}
+```
