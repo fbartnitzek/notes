@@ -295,3 +295,5 @@ app.use(function(req, res, next){
 	opacity: 1;
 }
 ```
+
+## Dynamic Price Feature

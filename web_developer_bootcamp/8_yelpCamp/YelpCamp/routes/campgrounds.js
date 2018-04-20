@@ -17,6 +17,7 @@ router.get("/", function (req, res) {
 // CREATE
 router.post("/", middleware.isLoggedIn, function(req, res){
     var name = req.body.name;
+    var price = req.body.price;
     var description = req.body.description;
     var image = req.body.image;
     var author = {
@@ -24,7 +25,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
         username: req.user.username
     };
     Campground.create(
-        {name: name, description: description, image: image, author: author},
+        {name: name, price: price, description: description, image: image, author: author},
         function (err, campground) {
             if (err){
                 // redirect to form and show error message
