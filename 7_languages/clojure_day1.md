@@ -355,6 +355,7 @@ seven-languages.core=> (filter #(< % 3) v)
     - a script for quickly invoking the repl in your env
 - do
     - implement a function called `(big st n)` that returns true if a string st is longer then n chars
+
 ```
 seven-languages.core=> (defn big [st n] (> (count st) n))
 #'seven-languages.core/big
@@ -365,7 +366,9 @@ false
 seven-languages.core=> (big "hellow" 5)
 true
 ```
+
     - write a function called `(collection-type col) that returns `:list`, `:map` or `:vector` based on the type of collection col.
+
 ```
 seven-languages.core=> (defn collection-type [col] (if (list? col) (str ":list") (if (map? col) (str ":map") (if (vector? col) (str ":vector")))))
 #'seven-languages.core/collection-type
