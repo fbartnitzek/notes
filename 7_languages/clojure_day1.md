@@ -1,4 +1,4 @@
-# Clojure Day1
+# Clojure Day1 - Training Luke
 - Lisp on JVM, yet another Lisp dialect
 - compare to yoda: macros and higher-order constructs - inner power that others can't seem to master
 
