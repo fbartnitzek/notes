@@ -350,9 +350,11 @@ seven-languages.core=> (filter #(< % 3) v)
 
 ## Self Study
 - Find
-    - examples using clojure sequences
+    - [examples](https://objectcomputing.com/resources/publications/sett/may-2011-clojure-sequences) using clojure sequences
     - the formal definition of a clojure function
-    - a script for quickly invoking the repl in your env
+        - [functions](https://clojure.org/guides/learn/functions)
+        - [higher-order-functions](https://clojure.org/guides/higher_order_functions)
+    - a script for quickly invoking the repl in your env: `lein repl`
 - do
     - implement a function called `(big st n)` that returns true if a string st is longer then n chars
 
