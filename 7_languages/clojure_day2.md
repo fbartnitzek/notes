@@ -371,8 +371,36 @@ nil
 ## Self-Study
 - find
   - implementation of some of the commonly used macros in the clojure language
+    - https://clojure.org/reference/macros
+    - http://bryangilbert.com/post/code/clojure/anatomy-of-a-clojure-macro/
   - an example of defining your own lazy sequence
+    - https://clojuredocs.org/clojure.core/lazy-seq
+    - http://clojure-doc.org/articles/language/laziness.html
+    - https://medium.com/@pwentz/laziness-in-clojure-3d83645bf7f3
+    - https://stackoverflow.com/questions/44095400/how-to-understand-clojures-lazy-seq
+    - https://github.com/clojure/clojure/blob/206d94c9cfb01f981a157142929c9456c547d6ea/src/jvm/clojure/lang/LazySeq.java#L17
   - the current status of the `defrecord` and `protocol` features (were under development as this book was made)
+    - 2013 with type-hints for DAO: https://blog.jayway.com/2013/02/05/learn-clojure-using-records-and-protocols/
+    - current with additional metadata: https://clojure.org/reference/protocols
+    - deftype, defrecord and reify: https://clojure.org/reference/datatypes
 - do
   - implement an unless with an `else` condition using macros
+    
+```
+user=> (defmacro unless [test body elsebody]
+#_=>   (list 'if (list 'not test) body elsebody))
+#'user/unless
+
+user=> (macroexpand '(unless codition body elsebody))
+(if (not codition) body elsebody)
+
+user=> (unless true (println "unless happened") (println "default happened"))
+default happened
+nil
+user=> (unless false (println "unless happened") (println "default happened"))
+unless happened
+nil
+```
+    
   - write a type using `defrecord` that implements a protocol
+    - see [compass.clj](Clojure/compass.clj)?
