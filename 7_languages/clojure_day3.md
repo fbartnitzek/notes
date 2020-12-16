@@ -272,9 +272,44 @@ user=> @finer-things
   
 ## Self study
 - find
-  - queue implementation that blocks when the queue is empty and waits for a new item in the queue
+  - [queue implementation](https://www.eidel.io/2019/01/22/thread-safe-queues-clojure/) that blocks when the queue is empty and waits for a new item in the queue
+  - https://www.braveclojure.com/concurrency/
 - do
   - use refs to create a vector of accounts in memory, create debit and credit functions to change the balance of an account
+    - implementation of [accounts.clj](Clojure/accounts.clj)
+      ```
+      ; debit -
+      ; credit +
+      
+      (def accounts (ref [1 2 3 4]))
+      
+      (defn credit
+      [accounts idx amount]
+      (dosync
+      (alter accounts update idx + amount)))
+      
+      (defn debit
+      [accounts idx amount]
+      (dosync
+      (alter accounts update idx - amount)))
+      ```
+      
+    - usage
+      ```
+      user=> (load-file "accounts.clj")
+      #'user/debit
+      user=> accounts
+      #object[clojure.lang.Ref 0x3e3fe6ef {:status :ready, :val [1 2 3 4]}]
+      user=> (debit accounts 2 12)
+      [1 2 -9 4]
+      user=> @accounts
+      [1 2 -9 4]
+      user=> (credit accounts 2 20)
+      [1 2 11 4]
+      user=> @accounts
+      [1 2 11 4]
+      ```
+      
   - sleeping barber problem (1965 by Edsger Dijkstra)
     - barber shop takes customers
     - customers arrive at random intervals, from 10 to 30ms
