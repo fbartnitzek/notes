@@ -6,6 +6,7 @@
 (def number-chairs 3)
 (def opening-seconds (* 1000 10))
 (def duration-haircut 20)
+(def customer-spawn-time #(+ (rand-int 21) 10))
 
 (def shop-open? (atom false))
 (def open-chairs (ref number-chairs))
@@ -21,7 +22,8 @@
 (defn generate-customers []
   (future
     (while @shop-open?
-      (let [time-next-customer (+ (rand-int 20) 10)]
+      (let [time-next-customer (customer-spawn-time)]
+        ;(print time-next-customer)
         (Thread/sleep time-next-customer)
         (dosync
           (if (> @open-chairs 0)
