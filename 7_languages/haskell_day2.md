@@ -199,20 +199,74 @@ fibNth x = head (drop (x - 1) (take (x) fib))
 ## Self-Study
 - find
     - functions that you can use on lists, strings or tuples
+        - https://hackage.haskell.org/package/base-4.14.1.0/docs/Data-List.html
+        - https://wiki.haskell.org/How_to_work_on_lists
     - a way to sort lists
+      - takeWhile / dropWhile / span / filter
 - do
-    - write a sort that takes a list and returns a sorted list
+    - write a sort that takes a list and returns a sorted [list](Haskell/sort.hs)
     - write a sort that takes a list and a function that compares its two args and then returns a sorted list
-    - write a Haskell function to convert a string to a number
+        - see [quicksort3](Haskell/sort.hs)
+    - write a Haskell function [convert](Haskell/conversion.hs) to convert a string to a number
         - the string should be in the form of `$2,345,678.99` and can possibly have leading zeros
+        ```
+        convert :: String -> Float
+        convert x = read stripped::Float
+          where
+            stripped = filter (/=',') (filter (/='$') x)
+
+        ```
     - write a func that takes an arg x and returns a lazy seq that has every third number, starting with x
         - then, write a func that includes every fifth number, beginning with y
         - combine these func through composition to return every eighth number, beginning with `x + y`
+        ```
+        lazySeq3 x = x : (lazySeq3 (x + 3))
+        lazySeq5 y = y : (lazySeq5 (y + 5))
+        lazySeq8 z = zipWith (+) (lazySeq3 z) (lazySeq5 z)
+      
+        *Main> take 10 (lazySeq3 42)
+        [42,45,48,51,54,57,60,63,66,69]
+        *Main> take 10 (lazySeq5 42)
+        [42,47,52,57,62,67,72,77,82,87]
+        *Main> take 10 (lazySeq8 42)
+        [84,92,100,108,116,124,132,140,148,156]
+        ```
     - use a partially applied func to define a func that will return half of a number 
         - and another that will append `\n` to the end of any string
+      ```
+      -- usual way
+      *Main> let half x = x / 2
+      *Main> half 14
+      7.0
+      *Main> let appendLF x = x ++ "\n"
+      *Main> appendLF "hello"
+      "hello\n"
+      
+      -- partially applied way
+      *Main> half = (/ 2)
+      *Main> half 14
+      7.0
+      *Main> appendLF = (++ "\n")
+      *Main> appendLF "hello"
+      "hello\n"
+      ```
+      
 - more demanding problems
-    - write a func to determine the greates common denominator of 2 integers
-    - create a lazy seq of prime numbers
+    - write a func to determine the greatest common denominator of 2 integers
+      ```
+      mygcd :: Integer -> Integer -> Integer
+      mygcd a 0 = a
+      mygcd a b = mygcd b (a `mod` b)
+      ```
+    - create a lazy seq of prime numbers (quite fast for 100k primes)
+      ```
+      lazyPrimes :: [Integer]
+      lazyPrimes = 2: 3: calcNextPrimes (tail lazyPrimes) [5, 7 .. ]
+      where
+      calcNextPrimes (p:ps) candidates =
+      let (smallerSquareP, (_:biggerSquareP)) = span (< p * p) candidates in
+      smallerSquareP ++ calcNextPrimes ps [c | c <- biggerSquareP, rem c p /= 0]
+      ```
     - break a long string into individual lines at proper word boundaries
     - add line numbers to the previous exercise
     - to the above exercise , add functions to left, right, and fully justify the text with spaces (making both margins straight)
