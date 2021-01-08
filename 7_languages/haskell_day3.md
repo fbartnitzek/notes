@@ -347,7 +347,14 @@ Enter your name: Frank
 ## Self-Study
 - find
     - a few monad tutorials
+      - https://wiki.haskell.org/Monad_tutorials_timeline  
+      - https://en.wikibooks.org/wiki/Haskell/Understanding_monads
     - a list of the monads in Haskell
+      - Representing failure using Maybe monad
+      - Nondeterminism using List monad to represent carrying multiple values
+      - State using State monad
+      - Read-only environment using Reader monad
+      - I/O using IO monad
 - do
     - write a function that looks up a hash table value that uses the Maybe Monad
         - write a hash stat stores other hashes, several levels deep
